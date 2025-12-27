@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management Exam</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+        }
+
+        .sidebar {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .progress-bar {
+            background: #e0e0e0;
+            border-radius: 10px;
+            height: 20px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .nav-buttons {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .nav-btn {
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #f5f5f5;
+        }
+
+        .nav-btn.answered {
+            background: #4caf50;
+            color: white;
+            border-color: #4caf50;
+        }
+
+        .nav-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .exam-header {
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        .exam-header h1 {
+            color: #333;
+            font-size: 28px;
+        }
+
+        .question-container {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .question-container.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .question-header {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .question-number {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .question-text {
+            font-size: 18px;
+            color: #333;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+
+        .options {
+            margin: 20px 0;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            background: #f5f5f5;
+            border-color: #667eea;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 15px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .option-label {
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .option.correct {
+            background: #d4edda;
+            border-color: #4caf50;
+        }
+
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .feedback.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 10px 25px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .nav-button:disabled {
+            border-color: #ccc;
+            color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .nav-button:disabled:hover {
+            background: white;
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+                top: 0;
+            }
+
+            .nav-buttons {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar with Quick Navigation -->
+        <div class="sidebar">
+            <h2>Quick Navigation</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">0 / 0 Answered</div>
+            <div class="nav-buttons" id="navButtons"></div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <div class="exam-header">
+                <h1>Project Management Exam</h1>
+            </div>
+
+            <!-- Questions Container -->
+            <div id="questionsContainer"></div>
+
+            <!-- Navigation Buttons -->
+            <div class="navigation-buttons">
+                <button class="nav-button" id="prevBtn" onclick="navigateQuestion(-1)">← Previous</button>
+                <button class="nav-button" id="nextBtn" onclick="navigateQuestion(1)">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- IMPORT EXTERNAL QUESTIONS FILE -->
+    <script src="questions.js"></script>
+
+    <script>
+        // ============================================
+        // EXAM LOGIC
+        // ============================================
+        let currentQuestion = 1;
+        let totalQuestions = 0;
+        let answeredQuestions = new Set();
+        let questionsData = [];
+
+        // Parse questions data
+        function parseQuestionsData(rawData) {
+            const lines = rawData.trim().split('\n').filter(line => line.trim());
+            const questions = [];
+            
+            lines.forEach(line => {
+                const parts = line.split('|');
+                if (parts.length === 6) {
+                    questions.push({
+                        level: parts[0].trim(),
+                        question: parts[1].trim(),
+                        options: {
+                            A: parts[2].trim(),
+                            B: parts[3].trim(),
+                            C: parts[4].trim()
+                        },
+                        correct: parts[5].trim()
+                    });
+                }
+            });
+            
+            return questions;
+        }
+
+        // Generate HTML for questions
+        function generateQuestions() {
+            const container = document.getElementById('questionsContainer');
+            container.innerHTML = '';
+
+            questionsData.forEach((q, index) => {
+                const questionNum = index + 1;
+                const questionHTML = `
+                    <div class="question-container" data-question="${questionNum}" data-correct="${q.correct}">
+                        <div class="question-header">
+                            <div class="question-number">Question ${questionNum} - ${q.level}</div>
+                            <div class="question-text">${q.question}</div>
+                        </div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q${questionNum}" value="A">
+                                <span class="option-label">${q.options.A}</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q${questionNum}" value="B">
+                                <span class="option-label">${q.options.B}</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q${questionNum}" value="C">
+                                <span class="option-label">${q.options.C}</span>
+                            </label>
+                        </div>
+                        <button class="submit-btn" onclick="checkAnswer(${questionNum})">Submit Answer</button>
+                        <div class="feedback" id="feedback-${questionNum}"></div>
+                    </div>
+                `;
+                container.innerHTML += questionHTML;
+            });
+        }
+
+        // Initialize the exam
+        function initExam() {
+            // Parse the questions from the external file
+            questionsData = parseQuestionsData(questionsRawData);
+            
+            generateQuestions();
+            const questions = document.querySelectorAll('.question-container');
+            totalQuestions = questions.length;
+            
+            // Generate navigation buttons
+            const navButtons = document.getElementById('navButtons');
+            navButtons.innerHTML = '';
+            for (let i = 1; i <= totalQuestions; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'nav-btn';
+                btn.textContent = i;
+                btn.onclick = () => goToQuestion(i);
+                navButtons.appendChild(btn);
+            }
+            
+            // Show first question
+            if (totalQuestions > 0) {
+                showQuestion(1);
+            }
+            
+            updateProgress();
+        }
+
+        // Show specific question
+        function showQuestion(questionNum) {
+            const questions = document.querySelectorAll('.question-container');
+            const navBtns = document.querySelectorAll('.nav-btn');
+            
+            questions.forEach(q => q.classList.remove('active'));
+            navBtns.forEach(btn => btn.classList.remove('active'));
+            
+            const targetQuestion = document.querySelector(`[data-question="${questionNum}"]`);
+            if (targetQuestion) {
+                targetQuestion.classList.add('active');
+                if (navBtns[questionNum - 1]) {
+                    navBtns[questionNum - 1].classList.add('active');
+                }
+                currentQuestion = questionNum;
+                
+                // Update navigation buttons state
+                document.getElementById('prevBtn').disabled = currentQuestion === 1;
+                document.getElementById('nextBtn').disabled = currentQuestion === totalQuestions;
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Navigate to question
+        function goToQuestion(questionNum) {
+            showQuestion(questionNum);
+        }
+
+        // Navigate previous/next
+        function navigateQuestion(direction) {
+            const newQuestion = currentQuestion + direction;
+            if (newQuestion >= 1 && newQuestion <= totalQuestions) {
+                showQuestion(newQuestion);
+            }
+        }
+
+        // Check answer
+        function checkAnswer(questionNum) {
+            const questionDiv = document.querySelector(`[data-question="${questionNum}"]`);
+            const correctAnswer = questionDiv.dataset.correct;
+            const selectedOption = questionDiv.querySelector('input[type="radio"]:checked');
+            const feedback = document.getElementById(`feedback-${questionNum}`);
+            const submitBtn = questionDiv.querySelector('.submit-btn');
+            
+            if (!selectedOption) {
+                alert('Please select an answer first!');
+                return;
+            }
+            
+            const userAnswer = selectedOption.value;
+            const options = questionDiv.querySelectorAll('.option');
+            
+            // Disable all options
+            questionDiv.querySelectorAll('input[type="radio"]').forEach(input => {
+                input.disabled = true;
+            });
+            
+            // Highlight correct and incorrect answers
+            options.forEach(option => {
+                const input = option.querySelector('input[type="radio"]');
+                if (input.value === correctAnswer) {
+                    option.classList.add('correct');
+                } else if (input.value === userAnswer && userAnswer !== correctAnswer) {
+                    option.classList.add('incorrect');
+                }
+            });
+            
+            // Show feedback
+            if (userAnswer === correctAnswer) {
+                feedback.className = 'feedback correct show';
+                feedback.innerHTML = '✓ Correct! Well done!';
+            } else {
+                feedback.className = 'feedback incorrect show';
+                feedback.innerHTML = `✗ Incorrect. The correct answer is: ${correctAnswer}`;
+            }
+            
+            // Disable submit button
+            submitBtn.disabled = true;
+            
+            // Mark as answered
+            answeredQuestions.add(questionNum);
+            const navBtns = document.querySelectorAll('.nav-btn');
+            if (navBtns[questionNum - 1]) {
+                navBtns[questionNum - 1].classList.add('answered');
+            }
+            
+            updateProgress();
+        }
+
+        // Update progress bar
+        function updateProgress() {
+            const progress = totalQuestions > 0 ? (answeredQuestions.size / totalQuestions) * 100 : 0;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = 
+                `${answeredQuestions.size} / ${totalQuestions} Answered`;
+        }
+
+        // Initialize when page loads
+        window.addEventListener('DOMContentLoaded', initExam);
+    </script>
+</body>
+</html>
