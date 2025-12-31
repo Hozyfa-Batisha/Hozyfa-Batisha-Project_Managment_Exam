@@ -103,20 +103,3 @@ IS|Which is an example of secondary storage?|RAM|Hard disk|Register|B
 IS|Operating systems manage:|Hardware and software resources|Only hardware|Only applications|A
 IS|The strategic role of IS in business is:|Operational efficiency|Competitive advantage|Innovation|B
 `;
-
-console.log("=".repeat(80));
-console.log("INFORMATION SYSTEMS QUESTION BANK - FORMATTED FOR WEBSITE");
-console.log("=".repeat(80));
-console.log("\nTotal Questions: " + (questionsData.trim().split('\n').length));
-console.log("\nCopy the text below and paste it into your questions.js file:");
-console.log("-".repeat(80));
-console.log("\n// Add this to your existing questionsRawData in questions.js:\n");
-console.log(questionsData);
-console.log("-".repeat(80));
-console.log("\n✓ Questions formatted and ready!");
-console.log("\nINSTRUCTIONS:");
-console.log("1. Open your questions.js file");
-console.log("2. Add these questions to the existing questionsRawData");
-console.log("3. Or create a new section for IS questions");
-console.log("4. Save and refresh your browser");
-console.log("\nFormat: IS|Question|Option A|Option B|Option C|Correct Answer");
