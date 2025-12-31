@@ -1,7 +1,7 @@
 // Information Systems Question Bank - Ready for Website Integration
 // This file contains all questions from the Foundation of IS PDF (pages 158-166)
 
-const questionsData = `
+const isQuestionsData = `
 IS|Define the term "System" in the context of information systems.|A set of isolated components|A set of interrelated components working together toward a common purpose|A collection of random elements|B
 IS|Explain the main characteristics of a system.|Only inputs and outputs|Purpose, interrelated parts, boundaries, environment, input/output, feedback|Just boundaries and purpose|B
 IS|Differentiate between open and closed systems.|Open systems don't interact with environment; closed systems do|Open systems interact with the environment; closed systems do not|Both are the same|B
