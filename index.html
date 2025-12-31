@@ -521,6 +521,17 @@
     <script src="is_questions.js"></script>
 
     <script>
+        console.log('PM Questions loaded?', typeof pmQuestionsData !== 'undefined');
+        console.log('IS Questions loaded?', typeof isQuestionsData !== 'undefined');
+        if (typeof pmQuestionsData !== 'undefined') {
+            console.log('PM Questions count:', pmQuestionsData.split('\n').length);
+        }
+        if (typeof isQuestionsData !== 'undefined') {
+            console.log('IS Questions count:', isQuestionsData.split('\n').length);
+        }
+    </script>
+    
+    <script>
         // Global variables
         let currentExam = null;
         let currentQuestion = 1;
