@@ -1,7 +1,7 @@
 // questions.js - External Questions Data File
 // Place this file in the same directory as your index.html
 
-const questionsRawData = `
+const pmQuestionsData = `
 L1|A project is best defined as a(n):|Permanent routine operation|Temporary endeavor with a unique purpose|Informal activity with no clear goal|B
 L1|Which of the following is NOT a classic project constraint?|Scope|Time|Human personality|C
 L1|IT projects are often characterized by:|Zero uncertainty|High diversity in size, scope, and technology|Only hardware-related work|B
