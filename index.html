@@ -119,6 +119,23 @@
             transform: scale(1.05);
         }
 
+        .revision-btn {
+            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .revision-btn:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #00cec9 0%, #00b894 100%);
+        }
+
         /* Optimized Exam Screen Layout */
         .exam-container {
             display: none;
@@ -580,7 +597,7 @@
             </div>
 
             <!-- Information Systems Card -->
-            <div class="exam-card" onclick="selectExam('is')">
+            <div class="exam-card">
                 <div class="exam-icon">💻</div>
                 <h2 class="exam-title">Information Systems</h2>
                 <p class="exam-description">
@@ -597,11 +614,14 @@
                         <div class="stat-label">Chapters</div>
                     </div>
                 </div>
-                <button class="start-btn">Start Exam →</button>
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button class="start-btn" onclick="event.stopPropagation(); selectExam('is')" style="flex: 1;">Start Exam →</button>
+                    <button class="revision-btn" onclick="event.stopPropagation(); window.location.href='is_revision.html'">📖 Revision</button>
+                </div>
             </div>
 
             <!-- Systems Analysis and Design Card -->
-            <div class="exam-card" onclick="selectExam('sad')">
+            <div class="exam-card">
                 <div class="exam-icon">🔧</div>
                 <h2 class="exam-title">Systems Analysis & Design</h2>
                 <p class="exam-description">
@@ -618,7 +638,10 @@
                         <div class="stat-label">Topics</div>
                     </div>
                 </div>
-                <button class="start-btn">Start Exam →</button>
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button class="start-btn" onclick="event.stopPropagation(); selectExam('sad')" style="flex: 1;">Start Exam →</button>
+                    <button class="revision-btn" onclick="event.stopPropagation(); window.location.href='sad_revision.html'">📖 Revision</button>
+                </div>
             </div>
         </div>
     </div>
