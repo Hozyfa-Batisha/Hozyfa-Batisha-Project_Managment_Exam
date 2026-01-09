@@ -777,7 +777,7 @@
                 </p>
                 <div class="exam-stats">
                     <div class="stat">
-                        <div class="stat-number">300+</div>
+                        <div class="stat-number">200+</div>
                         <div class="stat-label">Questions</div>
                     </div>
                     <div class="stat">
@@ -810,8 +810,32 @@
                     </div>
                 </div>
                 <div style="display: flex; gap: 10px; margin-top: 20px;">
-                    <button class="start-btn" onclick="event.stopPropagation(); alert('OOP exam questions coming soon!')" style="flex: 1; opacity: 0.6;">Start Exam →</button>
+                    <button class="start-btn" onclick="event.stopPropagation(); selectExam('oop')" style="flex: 1;">Start Exam →</button>
                     <button class="revision-btn" onclick="event.stopPropagation(); window.location.href='OOP_task.html'">📖 Revision</button>
+                </div>
+            </div>
+
+            <!-- Computing Fundamentals Card -->
+            <div class="exam-card">
+                <div class="exam-icon">🖥️</div>
+                <h2 class="exam-title">Computing Fundamentals</h2>
+                <p class="exam-description">
+                    Explore Computing Fundamentals, including basic computer hardware and software concepts,
+                     data representation, operating systems, networking, algorithms, and programming fundamentals.
+                </p>
+                <div class="exam-stats">
+                    <div class="stat">
+                        <div class="stat-number">TBA</div>
+                        <div class="stat-label">Questions</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Chapters</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button class="start-btn" onclick="event.stopPropagation(); alert('CS exam questions coming soon!')" style="flex: 1; opacity: 0.6;">Start Exam →</button>
+                    <button class="revision-btn" onclick="event.stopPropagation(); window.location.href='computing_fundamentals.html'">📖 Revision</button>
                 </div>
             </div>
         </div>
@@ -945,8 +969,21 @@
                 }
                 questionsData = parseQuestionsData(sadQuestionsData);
                 document.getElementById('examTitle').textContent = 'Systems Analysis & Design Exam';
+            } else if (examType === 'oop') {
+                if (typeof oopQuestionsData === 'undefined') {
+                    alert('Error: oop_questions.js file not found! Please make sure it exists.');
+                    return;
+                }
+                questionsData = parseQuestionsData(csQuestionsData);
+                document.getElementById('examTitle').textContent = 'Computing Fundamentals Exam';
+            } else if (examType === 'cs') {
+                if (typeof oopQuestionsData === 'undefined') {
+                    alert('Error: cs_questions.js file not found! Please make sure it exists.');
+                    return;
+                }
+                questionsData = parseQuestionsData(csQuestionsData);
+                document.getElementById('examTitle').textContent = 'Computing Fundamentals Exam';
             }
-            
             if (questionsData.length === 0) {
                 alert('Error: No questions found! Please check your question files.');
                 return;
