@@ -3,7 +3,7 @@
 
 const oopQuestionsData = `
 OOP|What is the output of: System.out.println("5" + 2 + 3);|8|523|53|B
-OOP|What is the output of: System.out.println(2 + 3 + "5");|235|55|Error|A
+OOP|What is the output of: System.out.println(2 + 3 + "5");|235|55|Error|B
 OOP|What will be printed: System.out.println('A' + 1);|A1|66|B|B
 OOP|What is the result of: 17 / 5 in Java?|3.4|3|Error|B
 OOP|What is the output: System.out.println(10 % 3);|1|3|0|A
