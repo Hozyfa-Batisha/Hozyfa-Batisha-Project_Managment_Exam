@@ -672,7 +672,7 @@
             }
 
             .exam-card {
-                padding: 25px;
+                padding: 2x5px;
             }
 
             .main-content {
@@ -790,9 +790,33 @@
                     <button class="revision-btn" onclick="event.stopPropagation(); window.location.href='sad_revision.html'">📖 Revision</button>
                 </div>
             </div>
+
+            <!-- Object-Oriented Programming Card -->
+            <div class="exam-card">
+                <div class="exam-icon">☕</div>
+                <h2 class="exam-title">Object-Oriented Programming</h2>
+                <p class="exam-description">
+                    Explore OOP fundamentals with Java including classes, objects, 
+                    inheritance, polymorphism, encapsulation, and exception handling.
+                </p>
+                <div class="exam-stats">
+                    <div class="stat">
+                        <div class="stat-number">TBA</div>
+                        <div class="stat-label">Questions</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">12+</div>
+                        <div class="stat-label">Topics</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button class="start-btn" onclick="event.stopPropagation(); alert('OOP exam questions coming soon!')" style="flex: 1; opacity: 0.6;">Start Exam →</button>
+                    <button class="revision-btn" onclick="event.stopPropagation(); window.location.href='OOP_task.html'">📖 Revision</button>
+                </div>
+            </div>
         </div>
     </div>
-
+    
     <!-- Exam Screen -->
     <div class="exam-container" id="examScreen">
         <!-- Main Content Area -->
@@ -852,6 +876,8 @@
             </div>
         </div>
     </div>
+
+    
 
     <!-- Import questions data from separate files -->
     <script src="pm_questions.js"></script>
