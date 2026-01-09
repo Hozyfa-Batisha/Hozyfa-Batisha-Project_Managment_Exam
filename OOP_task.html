@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP Task 2 - Questions & Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 0;
+        }
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0;
+        }
+        
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+        }
+        
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+        }
+        
+        .nav-links a:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .hero {
+            background: white;
+            border-radius: 30px;
+            padding: 60px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.3em;
+            color: #666;
+        }
+        
+        .content-grid {
+            display: grid;
+            gap: 30px;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+        }
+        
+        .section h2 {
+            color: #764ba2;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .section h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            padding: 15px 25px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .section h4 {
+            color: #444;
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .question {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .question strong {
+            color: #667eea;
+        }
+        
+        .answer {
+            margin-top: 10px;
+        }
+        
+        .answer strong {
+            color: #764ba2;
+        }
+        
+        .section p {
+            color: #2d3436;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+        
+        .section ul, .section ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .section li {
+            color: #2d3436;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+        
+        code {
+            background: #f1f3f5;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            color: #764ba2;
+            font-size: 0.95em;
+        }
+        
+        pre {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            overflow-x: auto;
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+            color: #2d3436;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            border: 1px solid #e9ecef;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background: #f8f9ff;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+            margin: 20px 0;
+        }
+        
+        .comment {
+            color: #6c757d;
+            font-style: italic;
+            font-size: 0.95em;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            text-align: center;
+            margin-top: 60px;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+        }
+
+        footer p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .hero {
+                padding: 30px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+            
+            pre {
+                padding: 15px;
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">☕ OOP Task 2</div>
+            <ul class="nav-links">
+                <li><a href="#q1">Review Questions</a></li>
+                <li><a href="#q2">Programming</a></li>
+                <li><a href="#q3">Errors</a></li>
+                <li><a href="#q4">Tracing</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Object-Oriented Programming</h1>
+            <p>Task 2 - Complete Questions & Solutions Guide</p>
+            <p style="margin-top: 10px; font-size: 1em;">Java Fundamentals & OOP Concepts</p>
+        </div>
+
+        <div class="content-grid">
+            <!-- Q1: Review Questions -->
+            <div class="section" id="q1">
+                <h2>Q1. Review Questions</h2>
+                
+                <h3>1. Valid Identifiers</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> Which of the following identifiers are valid?</p>
+                    <p>applet, Applet, 1++, ___a, q4#1, $4, #44, apps</p>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    <p><strong>Valid:</strong> applet, Applet, ___a, $4, apps</p>
+                    <p><strong>Invalid:</strong></p>
+                    <ul>
+                        <li><code>1++</code> → can't start with number</li>
+                        <li><code>q4#1</code> → # not allowed</li>
+                        <li><code>#44</code> → # not allowed</li>
+                    </ul>
+                </div>
+                
+                <h3>2. Division Result</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> What is the result of 25 / 4? How would you rewrite the expression if you wished the result to be a floating-point number?</p>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong> <strong>25 / 4 = 6</strong> (integer division drops the decimal part)</p>
+                    <p>To get decimal result:</p>
+                    <pre><code>25.0 / 4
+or
+(double)25 / 4
+or
+25 / 4.0</code></pre>
+                </div>
+                
+                <h3>3. Output of Statements</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> Show the output of the following statements:</p>
+                    <p>a. System.out.println("1" + 1);</p>
+                    <p>b. System.out.println('1' + 1);</p>
+                    <p>c. System.out.println("1" + 1 + 1);</p>
+                    <p>d. System.out.println("1" + (1 + 1));</p>
+                    <p>e. System.out.println('1' + 1 + 1);</p>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    <div class="highlight-box">
+                        <p>a. <code>System.out.println("1" + 1);</code> → <strong>11</strong></p>
+                        <p class="comment">// String concatenation, not addition</p>
+                        
+                        <p>b. <code>System.out.println('1' + 1);</code> → <strong>50</strong></p>
+                        <p class="comment">// '1' is ASCII 49, so 49 + 1 = 50</p>
+                        
+                        <p>c. <code>System.out.println("1" + 1 + 1);</code> → <strong>111</strong></p>
+                        <p class="comment">// "1" + 1 = "11", then "11" + 1 = "111"</p>
+                        
+                        <p>d. <code>System.out.println("1" + (1 + 1));</code> → <strong>12</strong></p>
+                        <p class="comment">// Parentheses first: 1+1=2, then "1"+2="12"</p>
+                        
+                        <p>e. <code>System.out.println('1' + 1 + 1);</code> → <strong>51</strong></p>
+                        <p class="comment">// '1'+1=50, then 50+1=51</p>
+                    </div>
+                </div>
+                
+                <h3>4. Comments</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> What is a comment? What is the syntax for a comment in Java? Is the comment ignored by the compiler?</p>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong> Comments are notes in the code that the compiler ignores. They're for humans to understand the code better.</p>
+                    <p><strong>Types:</strong></p>
+                    <ul>
+                        <li>Single line: <code>// this is a comment</code></li>
+                        <li>Multi-line: <code>/* comment */</code></li>
+                        <li>Documentation: <code>/** javadoc comment */</code></li>
+                    </ul>
+                    <p>Yes, the compiler completely ignores them.</p>
+                </div>
+                
+                <h3>5. Import Statement</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> What is the effect of the following import statement?</p>
+                    <pre><code>import java.util.*;</code></pre>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong> This imports all classes from java.util package like ArrayList, Scanner, Random, etc.</p>
+                </div>
+                
+                <h3>6. Message Dialog</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> What is the statement to display the message "Hello world" in a message dialog box?</p>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    <pre><code>JOptionPane.showMessageDialog(null, "Hello world");</code></pre>
+                </div>
+                
+                <h3>7. String Conversions</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> How do you convert an integer string into an int value? How do you convert a decimal string into a double value?</p>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    <p><strong>String to int:</strong></p>
+                    <pre><code>int value = Integer.parseInt("123");</code></pre>
+                    <p><strong>String to double:</strong></p>
+                    <pre><code>double value = Double.parseDouble("123.45");</code></pre>
+                </div>
+                
+                <h3>8. Random Ranges</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> Assuming that a Random object has been created called generator, what is the range of the result of each of the following expressions?</p>
+                    <p>a. generator.nextInt(20)</p>
+                    <p>b. generator.nextInt(8) + 1</p>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    <p>a. <code>generator.nextInt(20)</code> → gives 0 to 19</p>
+                    <p>b. <code>generator.nextInt(8) + 1</code> → gives 1 to 8</p>
+                </div>
+                
+                <h3>9. Square Root</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> Write an assignment statement that computes the square root of the sum of num1 and num2 and assigns the result to num3.</p>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    <pre><code>num3 = Math.sqrt(num1 + num2);</code></pre>
+                </div>
+                
+                <h3>10. Class Design</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> Design the state and behavior (as variables and methods signature) for objects that belong to the following classes:</p>
+                    <p>i. class CreditCard</p>
+                    <p>ii. class TrainTicket</p>
+                    <p>iii. class ClassRoom</p>
+                    <p>iv. class Hotel</p>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    
+                    <h4>i. CreditCard</h4>
+                    <p><strong>Variables:</strong> cardNumber, holderName, balance, creditLimit, expirationDate</p>
+                    <p><strong>Methods:</strong> makePayment(), charge(), getBalance(), isExpired()</p>
+                    
+                    <h4>ii. TrainTicket</h4>
+                    <p><strong>Variables:</strong> ticketNumber, passengerName, from, to, departureTime, price</p>
+                    <p><strong>Methods:</strong> validateTicket(), cancel(), printTicket()</p>
+                    
+                    <h4>iii. ClassRoom</h4>
+                    <p><strong>Variables:</strong> roomNumber, capacity, building, hasProjector</p>
+                    <p><strong>Methods:</strong> reserve(), release(), isAvailable()</p>
+                    
+                    <h4>iv. Hotel</h4>
+                    <p><strong>Variables:</strong> name, address, totalRooms, availableRooms, rating</p>
+                    <p><strong>Methods:</strong> bookRoom(), checkOut(), getAvailableRooms()</p>
+                </div>
+                
+                <h3>11. Constructors vs Methods</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> What are the differences between constructors and methods?</p>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    <table>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Constructor</th>
+                            <th>Method</th>
+                        </tr>
+                        <tr>
+                            <td>Purpose</td>
+                            <td>Initialize the object</td>
+                            <td>Do some action</td>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>Must be same as class</td>
+                            <td>Any name</td>
+                        </tr>
+                        <tr>
+                            <td>Return type</td>
+                            <td>None (not even void)</td>
+                            <td>Must have return type</td>
+                        </tr>
+                        <tr>
+                            <td>When called</td>
+                            <td>Automatically with new</td>
+                            <td>We call it manually</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <h3>12. Static vs Non-static</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> What are the differences between static and non-static members?</p>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    <table>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Static</th>
+                            <th>Non-static</th>
+                        </tr>
+                        <tr>
+                            <td>Belongs to</td>
+                            <td>The class itself</td>
+                            <td>Each object</td>
+                        </tr>
+                        <tr>
+                            <td>Memory</td>
+                            <td>One copy for all objects</td>
+                            <td>Each object has its own</td>
+                        </tr>
+                        <tr>
+                            <td>How to access</td>
+                            <td>ClassName.member</td>
+                            <td>objectName.member</td>
+                        </tr>
+                        <tr>
+                            <td>Can access</td>
+                            <td>Only static stuff</td>
+                            <td>Everything</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <h3>13. Local vs Member Variables</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> What are the difference between local variables and member variables?</p>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    <table>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Local</th>
+                            <th>Member</th>
+                        </tr>
+                        <tr>
+                            <td>Where</td>
+                            <td>Inside method</td>
+                            <td>In the class</td>
+                        </tr>
+                        <tr>
+                            <td>Lifetime</td>
+                            <td>Only while method runs</td>
+                            <td>As long as object exists</td>
+                        </tr>
+                        <tr>
+                            <td>Default value</td>
+                            <td>Must initialize manually</td>
+                            <td>Gets default (0, null, etc)</td>
+                        </tr>
+                        <tr>
+                            <td>Access modifiers</td>
+                            <td>Can't use</td>
+                            <td>Can use (public, private)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Q2: Programming Exercises -->
+            <div class="section" id="q2">
+                <h2>Q2. Programming Exercises</h2>
+                
+                <h3>1. Method Headers</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> Give the method header for each of the following methods:</p>
+                    <p>a. Method hypotenuse, which takes two double-precision, floating-point arguments: side1 and side2 and returns a double-precision, floating-point result.</p>
+                    <p>b. Method smallest, which takes three integers x, y and z and returns an integer.</p>
+                    <p>c. Method instructions, which does not take any arguments and does not return a value.</p>
+                    <p>d. Method intToFloat, which takes an integer argument number and returns a floating-point result.</p>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    <p>a.</p>
+                    <pre><code>public static double hypotenuse(double side1, double side2)</code></pre>
+                    
+                    <p>b.</p>
+                    <pre><code>public static int smallest(int x, int y, int z)</code></pre>
+                    
+                    <p>c.</p>
+                    <pre><code>public static void instructions()</code></pre>
+                    
+                    <p>d.</p>
+                    <pre><code>public static float intToFloat(int number)</code></pre>
+                </div>
+                
+                <h3>2. Implementing Two Methods</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> Create your java code to implement any two methods from question 1 as static methods, examine your code, from the same class.</p>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    <pre><code>public class MathUtils {
+    
+    // calculating hypotenuse using Pythagoras
+    public static double hypotenuse(double side1, double side2) {
+        return Math.sqrt(side1 * side1 + side2 * side2);
+    }
+    
+    // finding smallest of three numbers
+    public static int smallest(int x, int y, int z) {
+        int min = x;
+        if (y < min) {
+            min = y;
+        }
+        if (z < min) {
+            min = z;
+        }
+        return min;
+    }
+    
+    public static void main(String[] args) {
+        // testing hypotenuse
+        double h = hypotenuse(3.0, 4.0);
+        System.out.println("Hypotenuse: " + h);
+        
+        // testing smallest
+        int small = smallest(5, 2, 8);
+        System.out.println("Smallest: " + small);
+    }
+}</code></pre>
+                </div>
+                
+                <h3>3. Employee Class</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> Create a class called Employee. Class Employee includes three pieces of information as public instance variables: a first name (type String), a last name (type String) and a monthly salary (double). Your class should have a constructor that creates an employee with specified first name and last name. Provide a method setSalary(double salary) to set the monthly salary of the employee; if the monthly salary is not positive, set it to 0.0.</p>
+                    <p>Write a test application named EmployeeTest that creates an employee object with first name "Ahmed", last name "Aly" and a salary equals to 1000, display the object's salary, then give the employee a 10% raise and display the salary again.</p>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    <pre><code>public class Employee {
+    public String firstName;
+    public String lastName;
+    public double monthlySalary;
+    
+    public Employee(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    
+    public void setSalary(double salary) {
+        if (salary > 0) {
+            this.monthlySalary = salary;
+        } else {
+            this.monthlySalary = 0.0;
+        }
+    }
+}
+
+public class EmployeeTest {
+    public static void main(String[] args) {
+        Employee emp = new Employee("Ahmed", "Aly");
+        emp.setSalary(1000);
+        
+        System.out.println("Initial salary: " + emp.monthlySalary);
+        
+        // 10% raise
+        emp.setSalary(emp.monthlySalary * 1.10);
+        System.out.println("After raise: " + emp.monthlySalary);
+    }
+}</code></pre>
+                </div>
+                
+                <h3>4. Stock Class</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> Design a class named Stock that contains:</p>
+                    <ul>
+                        <li>A string data field named symbol for the stock's symbol.</li>
+                        <li>A string data field named name for the stock's name.</li>
+                        <li>A double data field named previousClosingPrice that stores the stock price for the previous day.</li>
+                        <li>A double data field named currentPrice that stores the stock price for the current time.</li>
+                        <li>A constructor that creates a stock with specified symbol and name.</li>
+                        <li>The accessor methods for all data fields.</li>
+                        <li>The mutator methods for previousClosingPrice and currentPrice.</li>
+                        <li>A method named changePercent() that returns the percentage changed from previousClosingPrice to currentPrice.</li>
+                    </ul>
+                    <p>Implement the class. Write a test program that creates a Stock object with the stock symbol SUNW, the name Sun Microsystems Inc, and the previous closing price of 100. Set a new current price to 90 and display the price-change percentage.</p>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    <pre><code>public class Stock {
+    private String symbol;
+    private String name;
+    private double previousClosingPrice;
+    private double currentPrice;
+    
+    public Stock(String symbol, String name) {
+        this.symbol = symbol;
+        this.name = name;
+    }
+    
+    // getters
+    public String getSymbol() { 
+        return symbol; 
+    }
+    
+    public String getName() { 
+        return name; 
+    }
+    
+    public double getPreviousClosingPrice() { 
+        return previousClosingPrice; 
+    }
+    
+    public double getCurrentPrice() { 
+        return currentPrice; 
+    }
+    
+    // setters
+    public void setPreviousClosingPrice(double price) {
+        this.previousClosingPrice = price;
+    }
+    
+    public void setCurrentPrice(double price) {
+        this.currentPrice = price;
+    }
+    
+    // calculating change percentage
+    public double changePercent() {
+        return ((currentPrice - previousClosingPrice) / previousClosingPrice) * 100;
+    }
+}
+
+public class StockTest {
+    public static void main(String[] args) {
+        Stock stock = new Stock("SUNW", "Sun Microsystems Inc");
+        stock.setPreviousClosingPrice(100);
+        stock.setCurrentPrice(90);
+        
+        System.out.println("Price change: " + stock.changePercent() + "%");
+    }
+}</code></pre>
+                </div>
+                
+                <h3>5. Smart Air Conditioner</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> Create a class named AirConditioner that models a real-world AC unit.</p>
+                    <p><strong>1. Attributes (Private):</strong></p>
+                    <ul>
+                        <li>brand (String)</li>
+                        <li>temperature (int)</li>
+                        <li>isOn (boolean)</li>
+                    </ul>
+                    <p><strong>2. Constructors:</strong></p>
+                    <ul>
+                        <li>A constructor that takes brand as a parameter. It should set the default temperature to 24 and isOn to false.</li>
+                    </ul>
+                    <p><strong>3. Methods:</strong></p>
+                    <ul>
+                        <li>turnOn(): Sets isOn to true.</li>
+                        <li>turnOff(): Sets isOn to false.</li>
+                        <li>setTemperature(int temp): Only changes the temperature if the AC is currently on and the new temperature is between 16 and 30. If the AC is off or the value is invalid, print an error message.</li>
+                        <li>displayStatus(): Prints the brand, current state (On/Off), and temperature.</li>
+                    </ul>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    <pre><code>public class AirConditioner {
+    private String brand;
+    private int temperature;
+    private boolean isOn;
+    
+    public AirConditioner(String brand) {
+        this.brand = brand;
+        this.temperature = 24;  // default temp
+        this.isOn = false;
+    }
+    
+    public void turnOn() {
+        isOn = true;
+    }
+    
+    public void turnOff() {
+        isOn = false;
+    }
+    
+    public void setTemperature(int temp) {
+        if (!isOn) {
+            System.out.println("Error: AC is off! Turn it on first.");
+        } else if (temp < 16 || temp > 30) {
+            System.out.println("Error: Temp must be between 16 and 30.");
+        } else {
+            temperature = temp;
+        }
+    }
+    
+    public void displayStatus() {
+        System.out.println("Brand: " + brand);
+        System.out.println("Status: " + (isOn ? "On" : "Off"));
+        System.out.println("Temperature: " + temperature);
+    }
+}</code></pre>
+                </div>
+                
+                <h3>6. Library Book System</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> Create a system to track books and the total number of books created.</p>
+                    <p><strong>1. Class Book:</strong></p>
+                    <ul>
+                        <li><strong>Instance Variables:</strong> title (String), price (double).</li>
+                        <li><strong>Static Variable:</strong> totalBooks (int) -- initialized to 0.</li>
+                        <li><strong>Constructor:</strong> Accepts title and price. It must increment totalBooks every time a new object is created.</li>
+                        <li><strong>Static Method:</strong> displayTotalBooks() that prints the total number of books created so far.</li>
+                    </ul>
+                    <p><strong>2. Class Library:</strong></p>
+                    <ul>
+                        <li>Create a method addDiscount(Book b, double percentage) that accepts a Book object and reduces its price by the given percentage.</li>
+                    </ul>
+                    <p><strong>3. Main Class:</strong></p>
+                    <ul>
+                        <li>Create 3 distinct Book objects.</li>
+                        <li>Call addDiscount on one of them.</li>
+                        <li>Call displayTotalBooks() to prove the static counter works.</li>
+                    </ul>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    <pre><code>public class Book {
+    private String title;
+    private double price;
+    private static int totalBooks = 0;  // shared counter
+    
+    public Book(String title, double price) {
+        this.title = title;
+        this.price = price;
+        totalBooks++;  // increment every time we create a book
+    }
+    
+    public double getPrice() { 
+        return price; 
+    }
+    
+    public void setPrice(double price) { 
+        this.price = price; 
+    }
+    
+    public static void displayTotalBooks() {
+        System.out.println("Total books: " + totalBooks);
+    }
+}
+
+public class Library {
+    public void addDiscount(Book b, double percentage) {
+        double newPrice = b.getPrice() * (1 - percentage / 100);
+        b.setPrice(newPrice);
+    }
+}
+
+public class LibraryTest {
+    public static void main(String[] args) {
+        // creating 3 books
+        Book book1 = new Book("Java Programming", 50.0);
+        Book book2 = new Book("Data Structures", 60.0);
+        Book book3 = new Book("Algorithms", 55.0);
+        
+        Library library = new Library();
+        library.addDiscount(book1, 10);  // 10% off
+        
+        Book.displayTotalBooks();
+        System.out.println("Book1 after discount: " + book1.getPrice());
+    }
+}</code></pre>
+                </div>
+                
+                <h3>7. Employee Inheritance</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> Note: Do not use polymorphism (e.g., do not use an Employee reference to hold a Manager object).</p>
+                    <p><strong>1. Class Employee:</strong></p>
+                    <ul>
+                        <li><strong>Attributes:</strong> name, id.</li>
+                        <li><strong>Constructor:</strong> Accepts name and id.</li>
+                        <li><strong>Method:</strong> printDetails() displays the name and ID.</li>
+                    </ul>
+                    <p><strong>2. Class Manager (extends Employee):</strong></p>
+                    <ul>
+                        <li><strong>Attributes:</strong> Adds department (String).</li>
+                        <li><strong>Constructor:</strong> Accepts name, id, and department. You must use the super keyword to initialize the inherited fields.</li>
+                        <li><strong>Method:</strong> printDetails() -- Override this method to print the Name, ID, and Department.</li>
+                    </ul>
+                    <p><strong>3. Main Class:</strong></p>
+                    <ul>
+                        <li>Create a Manager object (e.g., Manager m = new Manager(...)).</li>
+                        <li>Call m.printDetails().</li>
+                    </ul>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    <pre><code>public class Employee {
+    private String name;
+    private int id;
+    
+    public Employee(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+    
+    public void printDetails() {
+        System.out.println("Name: " + name);
+        System.out.println("ID: " + id);
+    }
+}
+
+public class Manager extends Employee {
+    private String department;
+    
+    public Manager(String name, int id, String department) {
+        super(name, id);  // calling parent constructor
+        this.department = department;
+    }
+    
+    @Override
+    public void printDetails() {
+        super.printDetails();  // calling parent method
+        System.out.println("Department: " + department);
+    }
+}
+
+public class EmployeeTest {
+    public static void main(String[] args) {
+        Manager m = new Manager("John Smith", 1001, "Engineering");
+        m.printDetails();
+    }
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Q3: Correct the Errors -->
+            <div class="section" id="q3">
+                <h2>Q3. Correct the Errors</h2>
+                
+                <h3>1. Box Constructor Error</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> Identify the error in the following code. Does it fail to compile?</p>
+                    <pre><code>class Box {
+    double width, height;
+    
+    // Parameterized constructor
+    public Box(double w, double h) {
+        width = w;
+        height = h;
+    }
+}
+
+public class TestBox {
+    public static void main(String[] args) {
+        // Error here
+        Box myBox = new Box();
+        System.out.println(myBox.width);
+    }
+}</code></pre>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    <p><strong>Problem:</strong> Line 14 tries <code>new Box()</code> but there's no constructor that takes no arguments.</p>
+                    
+                    <p><strong>Solution 1 - Add no-arg constructor:</strong></p>
+                    <pre><code>public Box() {
+    width = 0;
+    height = 0;
+}</code></pre>
+                    
+                    <p><strong>Solution 2 - Give it arguments:</strong></p>
+                    <pre><code>Box myBox = new Box(5.0, 10.0);</code></pre>
+                </div>
+                
+                <h3>2. Missing 'this' Keyword</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> The following code compiles, but the output is incorrect (it prints 0 instead of 10). Fix the code inside the method to ensure the instance variable x is updated properly.</p>
+                    <pre><code>class Demo {
+    int x;
+    
+    public void setX(int x) {
+        x = x; // Logic Error Here
+    }
+    
+    public void display() {
+        System.out.println("x = " + x);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Demo d = new Demo();
+        d.setX(10);
+        d.display();
+    }
+}</code></pre>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    <p><strong>Problem:</strong> <code>x = x;</code> just assigns the parameter to itself, doesn't update the instance variable.</p>
+                    
+                    <p><strong>Fix:</strong></p>
+                    <pre><code>public void setX(int x) {
+    this.x = x;  // 'this' refers to the object's x
+}</code></pre>
+                </div>
+                
+                <h3>3. Static/Non-static Issues</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> Identify and fix the errors in the following code:</p>
+                    <pre><code>class Calculator {
+    int count = 0; // Instance variable
+    
+    public static void increment() {
+        count++; // Error 1
+    }
+    
+    public void display() {
+        System.out.println(count);
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Calculator.display(); // Error 2
+    }
+}</code></pre>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    <p><strong>Problem 1:</strong> Static method can't access instance variable count</p>
+                    <p><strong>Problem 2:</strong> Calling instance method display() on the class instead of object</p>
+                    
+                    <p><strong>Fix:</strong></p>
+                    <pre><code>class Calculator {
+    static int count = 0;  // make it static
+    
+    public static void increment() {
+        count++;  // now it works
+    }
+    
+    public static void display() {  // make this static too
+        System.out.println(count);
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Calculator.increment();
+        Calculator.display();  // now both work
+    }
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Q4: Tracing -->
+            <div class="section" id="q4">
+                <h2>Q4. Tracing</h2>
+                
+                <h3>1. Car Class Trace</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> What is the output of the following code:</p>
+                    <pre><code>class Car {
+    public double speed;
+    public String model;
+    public double price = 1000;
+    public static double sales;
+    
+    public Car(String model, int speed) {
+        this.speed = speed;
+        this.model = model;
+        sales = sales + price;
+    }
+    
+    public void increaseSpeed(double value) {
+        speed = speed + value;
+    }
+}
+
+class Test {
+    public static void main(String[] arg) {
+        Car car1 = new Car("Opel Corsa", 20);
+        Car car2 = new Car("Matrix", 20);
+        car1.increaseSpeed(120);
+        car2.increaseSpeed(100);
+        System.out.println(car1.speed);
+        System.out.println(car2.speed);
+        System.out.println(car1.sales);
+        System.out.println(car2.sales);
+    }
+}</code></pre>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    <p><strong>Output:</strong></p>
+                    <pre><code>140.0
+120.0
+2000.0
+2000.0</code></pre>
+                    
+                    <p><strong>How it works:</strong></p>
+                    <ul>
+                        <li>car1 created: speed=20, sales becomes 1000</li>
+                        <li>car2 created: speed=20, sales becomes 2000 (it's static!)</li>
+                        <li>car1.increaseSpeed(120): car1.speed = 20 + 120 = 140</li>
+                        <li>car2.increaseSpeed(100): car2.speed = 20 + 100 = 120</li>
+                        <li>sales is static so both objects share it = 2000</li>
+                    </ul>
+                </div>
+                
+                <h3>2. Array Method Trace</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> Show the printout of the following code:</p>
+                    <pre><code>public static void main(String[] arg) {
+    int[] list = {1, 2, 3, 4, 5};
+    m(list);
+    for(int i = 0; i < list.length; i++)
+        System.out.println(list[i]);
+}
+
+public static void m(int[] arr) {
+    for(int i = 0; i < arr.length; i++)
+        arr[i] = arr[i] + 5;
+}</code></pre>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    <p><strong>Output:</strong></p>
+                    <pre><code>6
+7
+8
+9
+10</code></pre>
+                    
+                    <p><strong>Why:</strong></p>
+                    <ul>
+                        <li>Arrays are passed by reference (not copied)</li>
+                        <li>Method m() adds 5 to each element</li>
+                        <li>{1,2,3,4,5} becomes {6,7,8,9,10}</li>
+                        <li>Changes stick because we modified the actual array</li>
+                    </ul>
+                </div>
+                
+                <h3>3. Static Variable Trace</h3>
+                <div class="question">
+                    <p><strong>Question:</strong> Show the printout of the following code:</p>
+                    <pre><code>class A {
+    int i;
+    static int j;
+    
+    A(int i) {
+        this.i = i;
+        j++;
+    }
+    
+    void m1(A a1) {
+        a1.i++;
+        a1.j++;
+    }
+}
+
+class B {
+    public static void main(String[] arg) {
+        A a1 = new A(4);
+        A a2 = new A(7);
+        a1.m1(a1);
+        System.out.println("a1:" + "i=" + a1.i + " j=" + a1.j);
+        System.out.println("a2:" + "i=" + a2.i + " j=" + a2.j);
+    }
+}</code></pre>
+                </div>
+                <div class="answer">
+                    <p><strong>Answer:</strong></p>
+                    <p><strong>Output:</strong></p>
+                    <pre><code>a1:i=5 j=3
+a2:i=7 j=3</code></pre>
+                    
+                    <p><strong>Step by step:</strong></p>
+                    <ol>
+                        <li>a1 = new A(4): a1.i=4, j=1 (static)</li>
+                        <li>a2 = new A(7): a2.i=7, j=2 (static, so it's now 2 for everyone)</li>
+                        <li>a1.m1(a1): increments a1.i to 5 and j to 3</li>
+                        <li>j is static, so both a1 and a2 see j=3</li>
+                        <li>a2.i wasn't touched, still 7</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Object-Oriented Programming CS241 | Faculty of Computers & Artificial Intelligence</p>
+        <p style="margin-top: 10px; font-size: 0.9em;">Dr. Noha El-Shoafy</p>
+    </footer>
+</body>
+</html>
