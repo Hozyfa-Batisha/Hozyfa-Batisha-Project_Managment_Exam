@@ -5,6 +5,262 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OOP Task 2 - Questions & Solutions</title>
     <style>
+        
+        /* Tablet Responsive */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero {
+                padding: 40px 30px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8em;
+            }
+            
+            .section {
+                padding: 30px;
+            }
+            
+            .section h2 {
+                font-size: 1.8em;
+            }
+            
+            .section h3 {
+                font-size: 1.3em;
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 0;
+            }
+            
+            .nav-content {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 20px;
+            }
+            
+            .logo {
+                font-size: 1.5em;
+            }
+            
+            .nav-links {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 8px;
+                justify-content: center;
+                width: 100%;
+            }
+            
+            .nav-links li {
+                flex: 0 0 auto;
+            }
+            
+            .nav-links a {
+                padding: 6px 12px;
+                font-size: 0.9em;
+            }
+            
+            .container {
+                margin: 20px auto;
+                padding: 0 15px;
+            }
+            
+            .hero {
+                padding: 30px 20px;
+                border-radius: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .hero p {
+                font-size: 1.1em;
+            }
+            
+            .section {
+                padding: 20px;
+                border-radius: 15px;
+            }
+            
+            .section h2 {
+                font-size: 1.6em;
+            }
+            
+            .section h3 {
+                font-size: 1.2em;
+                padding: 12px 15px;
+            }
+            
+            .section h4 {
+                font-size: 1.1em;
+            }
+            
+            .question, .answer {
+                padding: 15px;
+            }
+            
+            .section p, .section li {
+                font-size: 1em;
+            }
+            
+            pre {
+                padding: 15px;
+                font-size: 0.85em;
+                overflow-x: auto;
+            }
+            
+            code {
+                font-size: 0.9em;
+                word-break: break-word;
+            }
+            
+            table {
+                font-size: 0.9em;
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            
+            th, td {
+                padding: 10px;
+            }
+            
+            .highlight-box {
+                padding: 15px;
+            }
+            
+            footer {
+                margin-top: 40px;
+                padding: 20px;
+            }
+            
+            footer p {
+                font-size: 1em;
+            }
+        }
+        
+        /* Small Mobile Devices */
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.3em;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .nav-links a {
+                padding: 8px 12px;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .container {
+                padding: 0 10px;
+            }
+            
+            .hero {
+                padding: 25px 15px;
+                border-radius: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 1.6em;
+            }
+            
+            .hero p {
+                font-size: 1em;
+            }
+            
+            .section {
+                padding: 15px;
+            }
+            
+            .section h2 {
+                font-size: 1.4em;
+                margin-bottom: 20px;
+            }
+            
+            .section h3 {
+                font-size: 1.1em;
+                padding: 10px 12px;
+                margin-top: 20px;
+            }
+            
+            .section h4 {
+                font-size: 1em;
+            }
+            
+            .question, .answer {
+                padding: 12px;
+            }
+            
+            .section p, .section li {
+                font-size: 0.95em;
+            }
+            
+            pre {
+                padding: 12px;
+                font-size: 0.8em;
+                border-radius: 8px;
+            }
+            
+            code {
+                padding: 2px 6px;
+                font-size: 0.85em;
+            }
+            
+            table {
+                font-size: 0.85em;
+            }
+            
+            th, td {
+                padding: 8px;
+                font-size: 0.85em;
+            }
+            
+            .highlight-box {
+                padding: 12px;
+            }
+            
+            .comment {
+                font-size: 0.9em;
+            }
+            
+            footer {
+                padding: 15px;
+                border-radius: 15px 15px 0 0;
+            }
+            
+            footer p {
+                font-size: 0.9em;
+            }
+        }
+        
+        /* Landscape Mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero h1 {
+                font-size: 1.8em;
+            }
+            
+            .hero {
+                padding: 20px 15px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+
+        
         * {
             margin: 0;
             padding: 0;
@@ -1215,4 +1471,5 @@ a2:i=7 j=3</code></pre>
         <p style="margin-top: 10px; font-size: 0.9em;">Dr. Noha El-Shoafy</p>
     </footer>
 </body>
+
 </html>
